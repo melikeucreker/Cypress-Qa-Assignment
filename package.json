@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "cypress": "^15.2.0"
+  },
+  "scripts": {
+  "start:api": "uvicorn main:app --reload",
+  "test:cypress": "cypress open"
+}
+
+}
