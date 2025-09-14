@@ -3,7 +3,7 @@ import { missingUsername, blankUsername, missingEmail, invalidPhone, minAge, max
 
 describe("User API Tests", () => {
 
-    // ---------- POSITIVE SCENARIO ----------
+    cy.step("Positive Scenario: Creating user with valid data");
     it("Test Case 1: Create user successfully with valid data", () => {
         cy.step("Positive Scenario: Sending valid user payload");
         cy.request("POST", "/users/", validUser).then((response) => {
@@ -14,7 +14,7 @@ describe("User API Tests", () => {
         });
     });
 
-    // ---------- NEGATIVE SCENARIOS ----------
+    cy.step("Negative Scenarios");
     it("Test Case 2: Missing username", () => {
         cy.step("Negative Scenario: Payload missing username");
         cy.request({ method: "POST", url: "/users/", body: missingUsername, failOnStatusCode: false })
@@ -89,7 +89,7 @@ describe("User API Tests", () => {
             });
     });
 
-    it("Test Case 10: Missing phone", () => { 
+    it("Test Case 10: Missing phone", () => {
         cy.step("Negative Scenario: Payload missing phone");
         const { phone, ...userWithoutPhone } = validUser;
         cy.request({ method: "POST", url: "/users/", body: userWithoutPhone, failOnStatusCode: false })
